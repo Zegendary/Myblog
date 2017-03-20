@@ -4,7 +4,7 @@
   "description": "blog",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/Zegendary/Myblog/issues"
   },
-  "homepage": "https://github.com/Zegendary/Myblog#readme"
+  "homepage": "https://github.com/Zegendary/Myblog#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }
