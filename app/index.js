@@ -2,6 +2,8 @@
  * 主要逻辑入口
  */
 const fs = require('fs');
+const path = require('path')
+const staticServer = require('./static-server/')
 
 class App {
 
@@ -9,12 +11,11 @@ class App {
 
   }
   initServer(){
-    let _package = require('../package.json');
-
-    return (request, response) => {
-      fs.readFile('./public/index.html', 'utf8', (error, data) => {
-        response.end(JSON.stringify(_package))
-      })
+    return (request,response)=>{
+      let {url} = request
+      let body = staticServer(url)
+      response.writeHead(200,'resolve ok',{'X-power-by':'node.js'})
+      response.end(body)
     }
   }
 }
