@@ -6,18 +6,25 @@
 
 module.exports = (request)=>{
   let {url,method,context} = request
+
   method = method.toLowerCase()
 
-  return new Promise.resolve({
+  return Promise.resolve({
     then:(resolve,reject)=>{
       context.method = method
       context.query = {}
 
-      request.on('data',(chunk)=>{
-        data += chunk
-      }).on('end',()=>{
-        resolve(JSON.parse(data))
-      })
+      if(method == 'post'){
+        let data = ''
+        request.on('data',(chunk)=>{
+          data += chunk
+        }).on('end',()=>{
+          context.body = JSON.parse(data)
+          resolve()
+        })
+      } else {
+        resolve()
+      }
     }
   })
 }
