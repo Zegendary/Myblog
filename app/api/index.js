@@ -2,7 +2,7 @@
  * Created by zhangxinwang on 25/03/2017.
  */
 module.exports = (request)=>{
-  let {url,method} = request
+  let {url,method,context} = request
   let apiMap = {
     '/list.action':['吉他','钢琴','贝斯'],
     '/user.action':['张新望','男','1992']
@@ -12,13 +12,7 @@ module.exports = (request)=>{
   if(method == 'get'){
     return Promise.resolve(apiMap[url])
   } else {
-    return new Promise((resolve,reject)=>{
-      let data = ''
-      request.on('data',(chunk)=>{
-        data += chunk
-      }).on('end',()=>{
-        resolve(JSON.parse(data))
-      })
-    })
+    let {body} = context
+    return Promise.resolve(body)
   }
 }

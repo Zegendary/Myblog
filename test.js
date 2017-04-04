@@ -1,17 +1,16 @@
 /**
  * Created by zhangxinwang on 25/03/2017.
  */
+const assert = require('assert')
 
-let p = new Promise((resolve,reject)=>{
-  setTimeout(reject,1000,'hello zxw')
+const p = Promise.resolve(1)
+
+const p1 = p.then(val => {
+  console.log(1)
+  return val+1
 })
-console.log(p)
 
-
-//then 可接受两个参数，第一个接受resolve的结果，第二个参数接受reject的结果
-p.then(val=>console.log(`resolve val is ${val}`),val=>console.log(`reject val is ${val}`))
-
-setTimeout(()=>{
-  console.log(p)
-  p.catch(val=>console.log(`catch val is ${val}`))
-},2000)
+const p2 = p1.then(val => {
+  console.log(val)
+  assert.equal(val,2)
+})

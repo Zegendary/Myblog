@@ -13,9 +13,11 @@ setTimeout(function () {
       console.log(error)
     }
   })
+  //模拟post
   $.ajax({
     url: '/list.action',
-    method: 'get',
+    method: 'post',
+    data: JSON.stringify(['hangzhou','zhangxinwang']),
     success: function (arr) {
       let liString = arr.map(function (ele) {
         return '<li>'+ ele+ '</li>'

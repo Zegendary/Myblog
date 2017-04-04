@@ -3,8 +3,9 @@
  */
 const fs = require('fs');
 const path = require('path')
-const staticServer = require('./static-server/')
+const staticServer = require('./static-server')
 const apiServer = require('./api')
+const urlParse = require('./url-parser')
 
 class App {
 
@@ -13,8 +14,18 @@ class App {
   }
   initServer(){
     return (request,response)=>{
+      let {url,method} = request
+      request.context = {
+        body:'',
+        query:{},
+        method:'get'
+      }
+      // console.log(request)
       //链
-      apiServer(request).then(val => {
+      urlParse(request).then(()=>{
+        console.log(request)
+        return apiServer(request)
+      }).then(val => {
         if(!val){
           // Promise
           return staticServer(request)
@@ -34,27 +45,6 @@ class App {
         }
         response.end(body)
       })
-
-
-
-      // let body = ''
-      // let headers = {
-      //   'X-power-by':'node.js'
-      // }
-      // //url action end  =>ajax
-      // if (url.match('action')){
-      //   apiServer(url).then(val=>{
-      //     body = JSON.stringify(val)
-      //     headers = Object.assign(headers,{'Content-Type':'application/json'})
-      //     response.writeHead(200,'resolve ok',headers)
-      //     response.end(body)
-      //   })
-      // } else {
-      //   staticServer(url).then((val)=>{
-      //     response.writeHead(200,'resolve ok',headers)
-      //     response.end(val)
-      //   })
-      // }
     }
   }
 }
