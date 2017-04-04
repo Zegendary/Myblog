@@ -7,7 +7,6 @@ const staticServer = require('./static-server/')
 const apiServer = require('./api')
 
 class App {
-
   constructor(){
 
   }
