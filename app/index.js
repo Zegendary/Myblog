@@ -20,10 +20,8 @@ class App {
         query:{},
         method:'get'
       }
-      // console.log(request)
       //链
       urlParse(request).then(()=>{
-        console.log(request)
         return apiServer(request)
       }).then(val => {
         if(!val){
