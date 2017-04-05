@@ -31,10 +31,10 @@ const fs= require('fs')
 let data = fs.createReadStream('./test/temp',{
   highWaterMark:1,
 })
-let out = ''
+let out = []
 data.on('data',(chunk)=>{
-  out += chunk
+  out.push(chunk)
 }).on('end',()=>{
-  console.log(out)
+  console.log(Buffer.concat(out).toString())
 })
 
