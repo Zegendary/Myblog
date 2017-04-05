@@ -10,7 +10,23 @@ const urlParse = require('./url-parser')
 class App {
 
   constructor(){
-
+    this.middlewareArr = [];
+    //设计一个空的Promise
+    this.middlewareChain = Promise.resolve();
+  }
+  use(middleware){
+    this.middlewareArr.push(middleware);
+  }
+  //创建Promise链条
+  composeMiddleware(context){
+    let { middlewareArr }= this
+    //根据中间件数组 创建Promise链条
+    for(let middleware of middlewareArr){
+      this.middlewareChain = this.middlewareChain.then(()=>{
+        return middleware(context)
+      })
+    }
+    return this.middlewareChain
   }
   initServer(){
     return (request,response)=>{
@@ -20,28 +36,30 @@ class App {
         query:{},
         method:'get'
       }
+      let context = {
+        req:request,
+        reqCtx:{
+          body:'',
+          query:{}
+        },
+        res:response,
+        resCtx:{
+          headers:'',
+          body:''
+        }
+      }
       // console.log(request)
       //链
-      urlParse(request).then(()=>{
-        return apiServer(request)
-      }).then(val => {
-        if(!val){
-          // Promise
-          return staticServer(request)
-        } else {
-          return val
-        }
-      }).then(val => {
+      urlParse(context).then(()=>{
+        return apiServer(context)
+      }).then(() => {
+        return staticServer(context)
+      }).then(() => {
         //数组
         let base = {'X-power-by':'node.js'}
-        let body = ''
-        if(val instanceof Buffer){
-          body = val
-        } else {
-          body = JSON.stringify(val)
-          let headers = Object.assign(base,{'Content-Type':'application/json'})
-          response.writeHead(200,'resolve ok',headers)
-        }
+        let { body,headers } = context.resCtx
+        response.writeHead(200,'resolve ok',Object.assign(base,headers))
+
         response.end(body)
       })
     }
