@@ -3,9 +3,6 @@
  */
 const fs = require('fs');
 const path = require('path')
-const staticServer = require('./static-server')
-const apiServer = require('./api')
-const urlParse = require('./url-parser')
 
 class App {
 
@@ -44,6 +41,7 @@ class App {
         },
         res:response,
         resCtx:{
+          hasUser:false,
           statusMessage: 'resolve ok',
           statusCode: 200,
           headers:{},//response的返回报文
