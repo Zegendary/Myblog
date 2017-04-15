@@ -24,13 +24,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
     font-weight: normal;
 }
-
 h2 {
     font-size: 20px;
     height: 40px;
     line-height: 40px
 }
-
 h3 {
     font-size: 18px;
     font-weight: bold;
@@ -39,7 +37,6 @@ h3 {
     clear: both;
     position: relative
 }
-
 h4 {
     font-size: 16px;
     height: 32px;
@@ -309,9 +306,9 @@ textarea:focus,
 button, .Btn {
     border: 0;
     /*background-color: #e84a01;*/
-  /*  width: 120px;
-    height: 32px;
-    line-height: 32px;*/
+    /*  width: 120px;
+      height: 32px;
+      line-height: 32px;*/
     /*color: #fff;*/
     /*border-radius: 2px;*/
     cursor: pointer;
@@ -334,5 +331,4 @@ button[disabled], .Btn[disabled] {
     color: #fff;
     border: 0;
 }
-
 /*# sourceMappingURL=common.css.map*/

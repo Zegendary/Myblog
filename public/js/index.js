@@ -1,3 +1,7 @@
+require('../css/index.scss');
+// const c = 'c';
+require('highlight.js').initHighlightingOnLoad()
+
 
 setTimeout(function () {
   $.ajax({
