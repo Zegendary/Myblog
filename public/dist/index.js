@@ -1730,7 +1730,7 @@ module.exports = function(hljs) {
         'IRread setDNS endSMS getKey micros ' +
         'millis begin print write ready flush width ' +
         'isPIN blink clear press mkdir rmdir close ' +
-        'point yield image BSSID click delay ' +
+        'point yield img BSSID click delay ' +
         'read text move peek beep rect line open ' +
         'seek fill size turn stop home find ' +
         'step tone sqrt RSSI SSID ' +
@@ -2014,11 +2014,11 @@ module.exports = function(hljs) {
       },
       // images and links
       {
-        begin: '(link:)?(http|https|ftp|file|irc|image:?):\\S+\\[.*?\\]',
+        begin: '(link:)?(http|https|ftp|file|irc|img:?):\\S+\\[.*?\\]',
         returnBegin: true,
         contains: [
           {
-            begin: '(link|image:?):',
+            begin: '(link|img:?):',
             relevance: 0
           },
           {
@@ -9717,7 +9717,7 @@ module.exports = function(hljs) {
       + ' hessian hgfred hilbertmap hilbert_matrix hipow histogram histogram_description'
       + ' hodge horner hypergeometric i0 i1 %ibes ic1 ic2 ic_convert ichr1 ichr2 icosahedron_graph'
       + ' icosidodecahedron_graph icurvature ident identfor identity idiff idim idummy'
-      + ' ieqn %if ifactors iframes ifs igcdex igeodesic_coords ilt image imagpart'
+      + ' ieqn %if ifactors iframes ifs igcdex igeodesic_coords ilt img imagpart'
       + ' imetric implicit implicit_derivative implicit_plot indexed_tensor indices'
       + ' induced_subgraph inferencep inference_result infix info_display init_atensor'
       + ' init_ctensor in_neighbors innerproduct inpart inprod inrt integerp integer_partitions'
@@ -10117,7 +10117,7 @@ module.exports = function(hljs) {
       'hwRenderLoad hyperGraph hyperPanel hyperShade hypot iconTextButton iconTextCheckBox ' +
       'iconTextRadioButton iconTextRadioCollection iconTextScrollList iconTextStaticLabel ' +
       'ikHandle ikHandleCtx ikHandleDisplayScale ikSolver ikSplineHandleCtx ikSystem ' +
-      'ikSystemInfo ikfkDisplayMethod illustratorCurves image imfPlugins inheritTransform ' +
+      'ikSystemInfo ikfkDisplayMethod illustratorCurves img imfPlugins inheritTransform ' +
       'insertJoint insertJointCtx insertKeyCtx insertKnotCurve insertKnotSurface instance ' +
       'instanceable instancer intField intFieldGrp intScrollBar intSlider intSliderGrp ' +
       'interToUI internalVar intersect iprEngine isAnimCurve isConnected isDirty isParentOf ' +
@@ -11997,7 +11997,7 @@ module.exports = function(hljs) {
         'createWriter endRaw endRecord PrintWritersaveBytes saveJSONArray saveJSONObject saveStream saveStrings ' +
         'saveXML selectOutput popMatrix printMatrix pushMatrix resetMatrix rotate rotateX rotateY rotateZ scale ' +
         'shearX shearY translate ambientLight directionalLight lightFalloff lights lightSpecular noLights normal ' +
-        'pointLight spotLight image imageMode loadImage noTint requestImage tint texture textureMode textureWrap ' +
+        'pointLight spotLight img imageMode loadImage noTint requestImage tint texture textureMode textureWrap ' +
         'blend copy filter get loadPixels set updatePixels blendMode loadShader PShaderresetShader shader createFont ' +
         'loadFont text textFont textAlign textLeading textMode textSize textWidth textAscent textDescent abs ceil ' +
         'constrain dist exp floor lerp log mag map max min norm pow round sq sqrt acos asin atan atan2 cos degrees ' +
@@ -13642,7 +13642,7 @@ module.exports = function(hljs) {
       VARIABLE,
       {
         className: 'attribute',
-        begin: '\\b(z-index|word-wrap|word-spacing|word-break|width|widows|white-space|visibility|vertical-align|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-rendering|text-overflow|text-indent|text-decoration-style|text-decoration-line|text-decoration-color|text-decoration|text-align-last|text-align|tab-size|table-layout|right|resize|quotes|position|pointer-events|perspective-origin|perspective|page-break-inside|page-break-before|page-break-after|padding-top|padding-right|padding-left|padding-bottom|padding|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|order|opacity|object-position|object-fit|normal|none|nav-up|nav-right|nav-left|nav-index|nav-down|min-width|min-height|max-width|max-height|mask|marks|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-height|letter-spacing|left|justify-content|initial|inherit|ime-mode|image-orientation|image-resolution|image-rendering|icon|hyphens|height|font-weight|font-variant-ligatures|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|empty-cells|display|direction|cursor|counter-reset|counter-increment|content|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|columns|color|clip-path|clip|clear|caption-side|break-inside|break-before|break-after|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background-blend-mode|background|backface-visibility|auto|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|align-self|align-items|align-content)\\b',
+        begin: '\\b(z-index|word-wrap|word-spacing|word-break|width|widows|white-space|visibility|vertical-align|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-rendering|text-overflow|text-indent|text-decoration-style|text-decoration-line|text-decoration-color|text-decoration|text-align-last|text-align|tab-size|table-layout|right|resize|quotes|position|pointer-events|perspective-origin|perspective|page-break-inside|page-break-before|page-break-after|padding-top|padding-right|padding-left|padding-bottom|padding|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|order|opacity|object-position|object-fit|normal|none|nav-up|nav-right|nav-left|nav-index|nav-down|min-width|min-height|max-width|max-height|mask|marks|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-img|list-style|line-height|letter-spacing|left|justify-content|initial|inherit|ime-mode|img-orientation|img-resolution|img-rendering|icon|hyphens|height|font-weight|font-variant-ligatures|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|empty-cells|display|direction|cursor|counter-reset|counter-increment|content|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|columns|color|clip-path|clip|clear|caption-side|break-inside|break-before|break-after|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-left-width|border-left-style|border-left-color|border-left|border-img-width|border-img-source|border-img-slice|border-img-repeat|border-img-outset|border-img|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-repeat|background-position|background-origin|background-img|background-color|background-clip|background-attachment|background-blend-mode|background|backface-visibility|auto|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|align-self|align-items|align-content)\\b',
         illegal: '[^\\s]'
       },
       {
@@ -14044,7 +14044,7 @@ module.exports = function(hljs) {
         'handgunMagazine handgunWeapon handsHit hasInterface hasPilotCamera hasWeapon hcAllGroups ' +
         'hcGroupParams hcLeader hcRemoveAllGroups hcRemoveGroup hcSelected hcSelectGroup hcSetGroup ' +
         'hcShowBar hcShownBar headgear hideBody hideObject hideObjectGlobal hideSelection hint hintC ' +
-        'hintCadet hintSilent hmd hostMission htmlLoad HUDMovementLevels humidity image importAllGroups ' +
+        'hintCadet hintSilent hmd hostMission htmlLoad HUDMovementLevels humidity img importAllGroups ' +
         'importance in inArea inAreaArray incapacitatedState independent inflame inflamed ' +
         'inGameUISetEventHandler inheritsFrom initAmbientLife inPolygon inputAction inRangeOfArtillery ' +
         'insertEditorObject intersect is3DEN is3DENMultiplayer isAbleToBreathe isAgent isArray ' +
@@ -14724,7 +14724,7 @@ module.exports = function(hljs) {
     'background-attachment',
     'background-clip',
     'background-color',
-    'background-image',
+    'background-img',
     'background-origin',
     'background-position',
     'background-repeat',
@@ -14738,12 +14738,12 @@ module.exports = function(hljs) {
     'border-bottom-width',
     'border-collapse',
     'border-color',
-    'border-image',
-    'border-image-outset',
-    'border-image-repeat',
-    'border-image-slice',
-    'border-image-source',
-    'border-image-width',
+    'border-img',
+    'border-img-outset',
+    'border-img-repeat',
+    'border-img-slice',
+    'border-img-source',
+    'border-img-width',
     'border-left',
     'border-left-color',
     'border-left-style',
@@ -14815,9 +14815,9 @@ module.exports = function(hljs) {
     'height',
     'hyphens',
     'icon',
-    'image-orientation',
-    'image-rendering',
-    'image-resolution',
+    'img-orientation',
+    'img-rendering',
+    'img-resolution',
     'ime-mode',
     'inherit',
     'initial',
@@ -14826,7 +14826,7 @@ module.exports = function(hljs) {
     'letter-spacing',
     'line-height',
     'list-style',
-    'list-style-image',
+    'list-style-img',
     'list-style-position',
     'list-style-type',
     'margin',
