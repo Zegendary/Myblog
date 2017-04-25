@@ -1,33 +1,6 @@
 require('../css/index.scss');
 // const c = 'c';
-require('highlight.js').initHighlightingOnLoad()
-
-
-setTimeout(function () {
-  $.ajax({
-    url: '/user.action',
-    method: 'get',
-    success: function (arr) {
-      var liString = arr.map(function (ele) {
-        return '<li>'+ ele+ '</li>'
-      }).join('')
-      $('#root').html(liString)
-    },
-    error: function (error) {
-      console.log(error)
-    }
-  })
-  $.ajax({
-    url: '/list.action',
-    method: 'get',
-    success: function (arr) {
-      let liString = arr.map(function (ele) {
-        return '<li>'+ ele+ '</li>'
-      }).join('')
-      $('#list').html(liString)
-    },
-    error: function (error) {
-      console.log(error)
-    }
-  })
-},1000)
+import Music from './music'
+$('.music').Music({
+  hide: true
+})
