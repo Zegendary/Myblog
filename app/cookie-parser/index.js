@@ -6,7 +6,7 @@ const cookie_parser = require('cookie')
 //设置白名单
 const whiteName = ['/name_zhangxinwang']
 module.exports = (ctx)=>{
-  let { url } = ctx.req;
+  let { pathname } = ctx.reqCtx;
   let { cookie } = ctx.req.headers;
   let { resCtx,res } = ctx;
   let cookieObj = cookie_parser.parse(cookie)
@@ -22,11 +22,11 @@ module.exports = (ctx)=>{
       //设置白名单
       const whiteNameList=['/name_zhangxinwang'];
       //登录
-      if(whiteNameList.indexOf(url)>-1){
+      if(whiteNameList.indexOf(pathname)>-1){
         res.setHeader('Set-Cookie',cookieStr(3600))
       };
       //登出
-      if(url=='/logout'){
+      if(pathname == '/logout'){
         res.setHeader('Set-Cookie',cookieStr(0))
       }
       resolve()
