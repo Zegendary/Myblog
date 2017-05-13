@@ -1,7 +1,7 @@
 /**
  * Created by zhangxinwang on 25/03/2017.
  */
-let router = require('./ajax')
+let Router = require('./ajax')
 
 module.exports=(ctx)=>{
   let { pathname,method } = ctx.reqCtx;

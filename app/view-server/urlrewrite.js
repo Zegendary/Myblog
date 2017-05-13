@@ -5,7 +5,7 @@ const urlrewriteMap = {
   '/' : 'index',
   '/list' : 'list',
   '/about' : 'about',
-  '/write' : 'write',
+  '/manage' : 'manege',
 }
 
 module.exports = urlrewriteMap

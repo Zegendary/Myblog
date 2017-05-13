@@ -11,16 +11,16 @@ const mime = require('mime')
 const urlrewriteMap = require('./urlrewrite')
 
 module.exports = (ctx)=>{
-  let { reqCtx,resCtx } = ctx
-  let { pathname } = reqCtx
+  let { reqCtx,resCtx } = ctx;
+  let { pathname } = reqCtx;
   return Promise.resolve({
-    then: (resolve,reject)=>{
-      if (pathname.match('action') || pathname.match(/\./)) {
+    then:(resolve,reject)=>{
+      if(pathname.match('action') || pathname.match(/\./)){
         resolve()
-      } else {
-        let viewPath = path.resolve(__dirname,'ejs')
-        let ejsName = urlrewriteMap[pathname]
-        if (ejsName) {
+      }else{
+        const viewPath = path.resolve(__dirname,'ejs');
+        let ejsName = urlrewriteMap[pathname];
+        if(ejsName){
           let layoutPath=path.resolve(viewPath,'layout.ejs');
           let layoutHtml = fs.readFileSync(layoutPath,'utf8');
           // new Function
@@ -30,15 +30,17 @@ module.exports = (ctx)=>{
           });
 
           let html = render({
-            templateName:ejsName,
-            hasUser: resCtx.hasUser
+            viewName:ejsName,
+            hasUser:resCtx.hasUser
           })
+
           resCtx.headers = Object.assign(resCtx.headers,{
-            'Content-Type': 'text/html'
+            'Content-Type':'text/html'
           });
-          resCtx.body = html
+          resCtx.body = html;
           resolve()
-        } else {
+        }else{
+          //重定向的功能
           resCtx.headers = Object.assign(resCtx.headers,{
             'Location':'/'
           });
